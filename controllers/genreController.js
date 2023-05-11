@@ -66,3 +66,11 @@ exports.genre_delete_post =  asyncHandler(async (req, res, nest) => {
   await Genre.findByIdAndDelete(req.body.genreid);
   res.redirect("/genres");
 });
+
+exports.genre_update_get =  asyncHandler(async (req, res, nest) => {
+  res.send("Update get not implemented");
+});
+
+exports.genre_update_post =  asyncHandler(async (req, res, nest) => {
+  res.send("Update post not implemented");
+});

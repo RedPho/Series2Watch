@@ -96,3 +96,11 @@ exports.serie_delete_post =  asyncHandler(async (req, res, nest) => {
   await Serie.findByIdAndDelete(req.body.serieid);
   res.redirect("/series");
 });
+
+exports.serie_update_get =  asyncHandler(async (req, res, nest) => {
+  res.send("Update get not implemented");
+});
+
+exports.serie_update_post =  asyncHandler(async (req, res, nest) => {
+  res.send("Update post not implemented");
+});
