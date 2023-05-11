@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Are you sure to delete serie: #{serie.title}
+  form(action="", method="post")
+    input(type="hidden", name="serieid", value=serie._id)
+    input(type="submit", value="Delete Serie")

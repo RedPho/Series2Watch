@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  form(action="", method="post") 
+    label Title:
+      input(type="text", name="title")
+    label Creator: 
+      input(type="text", name="creator")
+    label Summary: 
+      input(type="text", name="summary")
+    label Stars: 
+      input(type="text", name="stars", placeholder="( Seperated by comma(,) )")
+    label Start Year: 
+      input(type="number", name="start")
+    label End Year: 
+      input(type="number", name="end")
+    div Genres:
+      each genre in all_genres 
+        input(type='checkbox', name='genre', id=genre._id, value=genre._id )
+        label(for=genre._id) #{genre.name}
+    label Picture Url:
+      input(type="text", name="picture")
+    input(type="submit", value="Add")

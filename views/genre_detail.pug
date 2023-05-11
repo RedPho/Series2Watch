@@ -8,4 +8,5 @@ block content
   ul 
     each serie in serie_list
       li
-        a(href=serie.url)=serie.title
+        a(href=serie.url)=serie.title 
+  a(href="/genre/" + genre._id + "/delete") Delete Genre

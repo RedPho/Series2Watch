@@ -2,6 +2,7 @@ extends layout
 
 block content
   h1= title
+  img(src=serie.picture_url, alt="")
   div= serie.summary
   br
   div 
@@ -17,4 +18,5 @@ block content
         each genre in genre_list
           li
             a(href=genre.url)=genre.name
+  a(href="/serie/" + serie._id + "/delete") Delete Serie
   

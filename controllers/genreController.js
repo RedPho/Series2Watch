@@ -22,3 +22,47 @@ exports.genre_detail = asyncHandler(async (req, res, next) => {
     serie_list: series
   });
 });
+
+exports.genre_create_get = asyncHandler(async (req, res, nest) => {
+  res.render("genre_form", {
+    title: "New Genre"
+  })
+})
+
+exports.genre_create_post = [
+  body("description")
+    .trim()
+    .escape(),
+
+    asyncHandler(async (req, res, next) => {
+      // Extract the validation errors from a request.
+      const errors = validationResult(req);
+  
+      // Create a Book object with escaped and trimmed data.
+      const genre = new Genre({
+        name: req.body.name,
+        description: req.body.description
+      });
+  
+      if (!errors.isEmpty()) {
+        console.log(errors)
+        res.render("genre_form", {title: "New Genre"});
+      } else {
+        await genre.save();
+        res.redirect(genre.url);
+      }
+    }),
+];
+
+exports.genre_delete_get =  asyncHandler(async (req, res, nest) => {
+  const genre = await Genre.findById(req.params.id);
+  res.render("genre_delete", {
+    title: "Delete Genre",
+    genre: genre
+  });
+});
+
+exports.genre_delete_post =  asyncHandler(async (req, res, nest) => {
+  await Genre.findByIdAndDelete(req.body.genreid);
+  res.redirect("/genres");
+});
