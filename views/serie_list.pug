@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  ul
+    each serie in list_series
+      li
+        dt
+          a(href=serie.url)= serie.title
+        dd= serie.summary
+        br

@@ -13,8 +13,7 @@ var app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const dev_db_url =
-  "mongodb+srv://admin:spTvoaSIhrrKQHT5@cluster0.ilknl6r.mongodb.net/series2watch?retryWrites=true&w=majority";
+const dev_db_url = "mongodb+srv://admin:spTvoaSIhrrKQHT5@cluster0.ilknl6r.mongodb.net/series2watch?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));

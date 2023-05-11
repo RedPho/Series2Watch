@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  div
+    dt= genre.name
+    dd= genre.description
+  ul 
+    each serie in serie_list
+      li
+        a(href=serie.url)=serie.title

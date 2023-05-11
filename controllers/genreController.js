@@ -12,3 +12,13 @@ exports.genre_list = asyncHandler(async (req, res, next) => {
     list_genres: allGenres,
   });
 });
+
+exports.genre_detail = asyncHandler(async (req, res, next) => {
+  const genre = await Genre.findById(req.params.id).exec();
+  const series = await Serie.find({ genres: req.params.id }).exec();
+  res.render("genre_detail", {
+    title: "Genre List",
+    genre: genre,
+    serie_list: series
+  });
+});
