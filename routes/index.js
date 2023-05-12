@@ -8,7 +8,7 @@ serie_controller = require('../controllers/serieController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Series2Watch' });
 });
 
 router.get('/genres', genre_controller.genre_list);

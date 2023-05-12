@@ -17,7 +17,7 @@ exports.genre_detail = asyncHandler(async (req, res, next) => {
   const genre = await Genre.findById(req.params.id).exec();
   const series = await Serie.find({ genres: req.params.id }).exec();
   res.render("genre_detail", {
-    title: "Genre List",
+    title: "Genre Detail",
     genre: genre,
     serie_list: series
   });
@@ -68,9 +68,11 @@ exports.genre_delete_post =  asyncHandler(async (req, res, nest) => {
 });
 
 exports.genre_update_get =  asyncHandler(async (req, res, nest) => {
-  res.send("Update get not implemented");
+  const genre = await Genre.findById(req.params.id).exec();
+  res.render("genre_form", { genre: genre});
 });
 
 exports.genre_update_post =  asyncHandler(async (req, res, nest) => {
-  res.send("Update post not implemented");
+  await Genre.findByIdAndUpdate(req.params.id, {name: req.body.name, description: req.body.description})
+  res.redirect("/genre/" + req.params.id);
 });

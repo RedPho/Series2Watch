@@ -3,22 +3,47 @@ extends layout
 block content
   h1= title
   form(action="", method="post") 
-    label Title:
-      input(type="text", name="title")
-    label Creator: 
-      input(type="text", name="creator")
-    label Summary: 
-      input(type="text", name="summary")
-    label Stars: 
-      input(type="text", name="stars", placeholder="( Seperated by comma(,) )")
-    label Start Year: 
-      input(type="number", name="start")
-    label End Year: 
-      input(type="number", name="end")
-    div Genres:
-      each genre in all_genres 
-        input(type='checkbox', name='genre', id=genre._id, value=genre._id )
-        label(for=genre._id) #{genre.name}
-    label Picture Url:
-      input(type="text", name="picture")
-    input(type="submit", value="Add")
+    if serie 
+      label Title:
+          input(type="text", name="title" value=serie.title)
+      label Creator: 
+          input(type="text", name="creator" value=serie.creator)
+      label Summary: 
+        input(type="text", name="summary" value=serie.summary)
+      label Stars: 
+        input(type="text", name="stars", placeholder="( Seperated by comma(,) )" value=serie.stars.toString())
+      label Start Year: 
+        input(type="number", name="start" value=serie.year_of_start)
+      label End Year: 
+        input(type="number", name="end" value=serie.year_of_end)
+      div Genres:
+        each genre in all_genres 
+          -console.log(genre.checked)
+          if genre.checked 
+            input(type='checkbox', name='genre', id=genre._id, value=genre._id checked)
+          else 
+            input(type='checkbox', name='genre', id=genre._id, value=genre._id)
+          label(for=genre._id) #{genre.name}
+      label Picture Url:
+        input(type="text", name="picture" value=serie.picture_url)
+
+    else 
+      label Title:
+          input(type="text", name="title")
+      label Creator: 
+          input(type="text", name="creator")
+      label Summary: 
+        input(type="text", name="summary")
+      label Stars: 
+        input(type="text", name="stars", placeholder="( Seperated by comma(,) )")
+      label Start Year: 
+        input(type="number", name="start")
+      label End Year: 
+        input(type="number", name="end")
+      div Genres:
+        each genre in all_genres 
+          input(type='checkbox', name='genre', id=genre._id, value=genre._id )
+          label(for=genre._id) #{genre.name}
+      label Picture Url:
+        input(type="text", name="picture")
+    input(type="submit", value="Submit")
