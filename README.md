@@ -1,1 +1,3 @@
-Express app with CRUD operations
+Live: https://series2watch-production.up.railway.app/
+
+Series information app made with express.js
